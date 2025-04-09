@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { getRandomInterviewCover } from '@/lib/utils';
 import { Button } from './button';
 import Link from 'next/link';
+import DisplayTechIcons from './DisplayTechIcons';
 
 const InterviewCard = ({interviewId, userId, role, type, techstack, createdAt}: InterviewCardProps) => {
     const feedback = null as Feedback | null;
@@ -30,7 +31,7 @@ const InterviewCard = ({interviewId, userId, role, type, techstack, createdAt}: 
 
                     <div className="flex flex-row gap-2 items-center">
                         <Image src="/star.svg" alt="star" width={22} height={22} />
-                        <p>{feedback?.totalScore || '--'}/100</p>
+                        <p>{feedback?.totalScore || '---'}/100</p>
                     </div>
                 </div>
                 <p className="line-clamp-2 mt-5">
@@ -38,7 +39,8 @@ const InterviewCard = ({interviewId, userId, role, type, techstack, createdAt}: 
                 </p>
             </div>
                 <div className="flex flex-row justify-between">
-                    <p>Tech Icons</p>
+                    <DisplayTechIcons techStack={techstack} />
+
                     <Button className="btn-primary">
                         <Link href={feedback? `/interview/${interviewId}/feedback`
                         : `/interview/${interviewId}`}>
