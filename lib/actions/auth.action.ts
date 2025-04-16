@@ -2,7 +2,6 @@
 
 import { db, auth } from "@/firebase/admin";
 import { cookies } from "next/headers";
-import { use } from "react";
 
 const ONE_WEEK = 60 * 60 * 24 * 7;
 
